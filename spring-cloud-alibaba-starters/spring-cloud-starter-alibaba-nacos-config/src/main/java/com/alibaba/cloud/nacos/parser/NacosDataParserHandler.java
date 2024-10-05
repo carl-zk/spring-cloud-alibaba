@@ -26,6 +26,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.alibaba.cloud.nacos.utils.NacosConfigUtils;
+import com.alibaba.nacos.api.common.Constants;
 
 import org.springframework.boot.env.OriginTrackedMapPropertySource;
 import org.springframework.boot.env.PropertiesPropertySourceLoader;
@@ -85,7 +86,7 @@ public final class NacosDataParserHandler {
 			}
 			else {
 				nacosByteArrayResource = new NacosByteArrayResource(
-						configValue.getBytes(), configName);
+						configValue.getBytes(Constants.ENCODE), configName);
 			}
 			nacosByteArrayResource.setFilename(getFileName(configName, extension));
 			List<PropertySource<?>> propertySourceList = propertySourceLoader
